@@ -1,1195 +1,369 @@
-<!doctype html>
-<html lang="nl">
-<head>
-  <meta charset="utf-8">
-  <title>BYWILL – Innerlijke Reis</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --dark:#04060d;
-      --mid:#0b1431;
-      --light:#1f3570;
-      --lightTop:#7a90ff;
-
-      --text:#f5f7ff;
-      --muted:#cfd5ff;
-
-      --line:rgba(255,255,255,0.14);
-      --card:rgba(255,255,255,0.06);
-      --card2:rgba(255,255,255,0.09);
-
-      --shadow: 0 18px 50px rgba(0,0,0,0.45);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:'Inter', system-ui, sans-serif;
-      color:var(--text);
-      background:linear-gradient(to top, var(--dark) 0%, var(--mid) 40%, var(--light) 75%, var(--lightTop) 100%);
-      min-height:100vh;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background-image:
-        radial-gradient(1px 1px at 25% 30%, rgba(255,255,255,.55), transparent 50%),
-        radial-gradient(1px 1px at 65% 20%, rgba(255,255,255,.45), transparent 50%),
-        radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,.40), transparent 50%);
-      background-size:420px 420px;
-      opacity:.20;
-    }
-
-    .wrap{
-      max-width:1120px;
-      margin:auto;
-      padding:0 20px;
-      position:relative;
-    }
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:10;
-      backdrop-filter: blur(12px);
-      background: rgba(10,18,48,0.35);
-      border-bottom:1px solid var(--line);
-    }
-    .nav{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 0;
-    }
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      min-width:220px;
-    }
-    .brand img{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      object-fit:cover;
-    }
-    .brand span{
-      font-family:Impact, Haettenschweiler, "Arial Black", sans-serif;
-      font-size:20px;
-      letter-spacing:1px;
-    }
-    nav{
-      display:flex;
-      flex-wrap:wrap;
-      justify-content:center;
-      gap:6px;
-    }
-    nav a{
-      color:var(--muted);
-      text-decoration:none;
-      font-size:14px;
-      padding:10px 12px;
-      border-radius:14px;
-      border:1px solid transparent;
-    }
-    nav a:hover{
-      color:var(--text);
-      background:rgba(255,255,255,0.06);
-      border:1px solid rgba(255,255,255,0.08);
-    }
-    .navRight{
-      min-width:220px;
-      display:flex;
-      justify-content:flex-end;
-      gap:10px;
-      flex-wrap:wrap;
-    }
-
-    .btn{
-      display:inline-block;
-      padding:12px 18px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      color:var(--text);
-      text-decoration:none;
-      background:rgba(255,255,255,0.06);
-      font-weight:500;
-      cursor:pointer;
-    }
-    .btn:hover{ background:rgba(255,255,255,0.10); }
-    .btn.primary{ background:rgba(255,255,255,0.16); }
-
-    .section{ padding:96px 0; }
-    .sectionHead{ margin-bottom:22px; max-width:78ch; }
-    .sectionHead h2{
-      margin:0 0 10px 0;
-      font-weight:600;
-      font-size:34px;
-      letter-spacing:.2px;
-      line-height:1.2;
-    }
-    .sectionLead{
-      margin:0;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:15px;
-    }
-
-    .hero{ padding:92px 0 82px; }
-    .heroGrid{
-      display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap:44px;
-      align-items:center;
-    }
-    .hero h1{
-      font-weight:600;
-      font-size:48px;
-      line-height:1.18;
-      letter-spacing:0.2px;
-      margin:0 0 18px 0;
-      max-width:22ch;
-    }
-    .hero p{
-      margin:0;
-      font-size:17px;
-      color:var(--muted);
-      line-height:1.8;
-      max-width:64ch;
-    }
-    .heroButtons{
-      margin-top:28px;
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .heroCard{
-      border:1px solid rgba(255,255,255,0.14);
-      background:rgba(255,255,255,0.06);
-      border-radius:28px;
-      padding:22px;
-      box-shadow: var(--shadow);
-    }
-    .heroLogo{
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-    .heroLogo img{
-      max-width:100%;
-      max-height:420px;
-      filter: drop-shadow(0 28px 60px rgba(0,0,0,0.55));
-    }
-
-    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
-    .grid3{ display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
-
-    .card{
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:22px;
-      padding:22px;
-    }
-    .card.soft{ background:var(--card2); }
-    .card h3{
-      margin:0 0 10px 0;
-      font-size:18px;
-      font-weight:600;
-      letter-spacing:.2px;
-    }
-    .card p{
-      margin:0 0 10px 0;
-      color:var(--muted);
-      line-height:1.8;
-      font-size:14px;
-    }
-    .card p:last-child{ margin-bottom:0; }
-    .cleanList{
-      margin:0;
-      padding-left:18px;
-      color:var(--muted);
-      line-height:1.85;
-      font-size:14px;
-    }
-    .cleanList li{ margin:0 0 8px 0; }
-
-    .pill{
-      display:inline-block;
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      color:var(--muted);
-    }
-
-    .journeyFlow{ margin-top:26px; display:grid; gap:18px; }
-    .journeyBlock{
-      border-radius:26px;
-      padding:0;
-      border:1px solid var(--line);
-      background:var(--card);
-      overflow:hidden;
-    }
-    .journeyHead{
-      padding:22px 26px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .journeyHead:hover{ background:rgba(255,255,255,0.04); }
-    .journeyBlock h3{ margin:0 0 10px 0; font-size:20px; font-weight:600; }
-    .journeyBlock p{ margin:0 0 10px 0; color:var(--muted); line-height:1.8; font-size:14px; }
-    .journeyBody{
-      padding:0 26px 22px 26px;
-      display:none;
-    }
-    .journeyBody.show{ display:block; }
-    .earth{ background:rgba(120,90,60,0.10); }
-    .transition{ background:rgba(120,120,180,0.10); }
-    .air{ background:rgba(180,200,255,0.12); }
-
-    .commitCard{
-      margin-top:18px;
-      border-radius:26px;
-      padding:26px;
-      border:1px solid var(--line);
-      background:var(--card2);
-    }
-    .commitCard h3{ margin:0 0 10px 0; font-size:20px; font-weight:600; }
-    .commitCard p{ margin:0 0 10px 0; color:var(--muted); line-height:1.85; font-size:14px; }
-    .commitStrong{ color:rgba(255,255,255,0.95); font-weight:500; font-size:15px; }
-
-    .zonesGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
-    .zoneTop{ display:flex; gap:12px; align-items:flex-start; margin-bottom:10px; }
-    .zoneNr{
-      width:34px; height:34px; border-radius:12px;
-      display:grid; place-items:center;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.08);
-      font-weight:600;
-      flex:0 0 auto;
-    }
-    .zoneTitle h3{ margin:0 0 8px 0; font-size:16px; font-weight:600; }
-    .zoneText{ margin:0 0 12px 0; color:var(--muted); line-height:1.75; font-size:14px; }
-
-    .zoneDetails{
-      border:1px solid var(--line);
-      background:var(--card);
-      border-radius:22px;
-      padding:0;
-      overflow:hidden;
-    }
-    .zoneDetails summary{
-      padding:22px;
-      cursor:pointer;
-      list-style:none;
-    }
-    .zoneDetails summary::-webkit-details-marker{ display:none; }
-    .zoneDetails summary:hover{ background:rgba(255,255,255,0.04); }
-    .zoneBody{ padding:0 22px 22px 22px; }
-    .zoneMetaRow{ display:flex; gap:10px; flex-wrap:wrap; margin:10px 0 12px 0; }
-
-    .chipLink{
-      display:inline-block;
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,0.14);
-      background: rgba(255,255,255,0.05);
-      color:var(--muted);
-      text-decoration:none;
-    }
-    .chipLink:hover{ color:var(--text); background: rgba(255,255,255,0.09); }
-
-    .zoneH4{
-      margin:14px 0 8px 0;
-      font-size:14px;
-      font-weight:600;
-      color:rgba(255,255,255,0.92);
-    }
-    .zoneTextLong{
-      margin:0 0 10px 0;
-      color:var(--muted);
-      line-height:1.85;
-      font-size:14px;
-    }
-
-    .steps4{ margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-    .stepMini{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      border-radius:18px;
-      padding:14px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .stepNr{
-      width:30px; height:30px; border-radius:12px;
-      display:grid; place-items:center;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.08);
-      font-weight:600;
-      flex:0 0 auto;
-    }
-    .stepTxt{ margin-top:4px; font-size:12px; color:var(--muted); line-height:1.5; }
-
-    .note{ margin-top:12px; font-size:12px; color:rgba(255,255,255,0.65); line-height:1.6; }
-
-    .sessionsGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
-    .sessionTop{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
-    .sessionTag{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      color:var(--muted);
-      white-space:nowrap;
-    }
-    .sessionCard h4{ margin:0; font-weight:600; letter-spacing:.3px; font-size:18px; }
-    .guideGrid{ margin-top:14px; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; }
-
-    .mappingGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-    .mapTop{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
-    .mapLine{
-      border-top:1px solid rgba(255,255,255,0.10);
-      padding-top:10px;
-      display:flex;
-      gap:10px;
-      flex-direction:column;
-    }
-    .mapLine strong{
-      font-size:12px;
-      color:rgba(255,255,255,0.80);
-      letter-spacing:.2px;
-      font-weight:600;
-    }
-    .mapLine span{
-      font-size:14px;
-      color:rgba(255,255,255,0.90);
-      line-height:1.6;
-    }
-
-    .kennismakenGrid{
-      display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap:24px;
-      align-items:start;
-      margin-top:28px;
-    }
-    .kennismakenIntro{ max-width:72ch; }
-    .kennismakenIntro h2{ font-size:40px; line-height:1.15; margin:0 0 14px 0; font-weight:600; }
-    .kennismakenIntro .lead{ margin:0 0 14px 0; color:var(--muted); line-height:1.8; font-size:16px; max-width:68ch; }
-    .kennismakenText{ margin-top:18px; display:grid; gap:12px; }
-    .kennismakenText p{ margin:0; color:rgba(255,255,255,0.92); line-height:1.85; font-size:15px; max-width:72ch; }
-    .kennismakenActions{ margin-top:22px; display:flex; gap:12px; flex-wrap:wrap; }
-    .smallNote{ margin-top:10px; font-size:13px; color:rgba(255,255,255,0.65); line-height:1.6; }
-    .quoteCard{
-      margin-top:18px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.06);
-      border-radius:22px;
-      padding:18px;
-      color:rgba(255,255,255,0.92);
-      line-height:1.85;
-      font-size:15px;
-    }
-
-    .contactCard{
-      margin-top:26px;
-      max-width:560px;
-      padding:30px;
-      border-radius:28px;
-      border:1px solid var(--line);
-      background:var(--card2);
-      box-shadow: var(--shadow);
-    }
-    .contactText{ font-size:15px; line-height:1.85; color:var(--muted); margin:0 0 10px 0; }
-    .formField{ display:flex; flex-direction:column; margin-bottom:18px; }
-    .formField label{ font-size:13px; margin-bottom:6px; color:rgba(255,255,255,0.85); }
-    .formField input{
-      padding:14px 16px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,0.06);
-      color:var(--text);
-      font-size:15px;
-    }
-    .formField input::placeholder{ color:rgba(255,255,255,0.45); }
-    .formField input:focus{
-      outline:none;
-      border-color:rgba(255,255,255,0.35);
-      background:rgba(255,255,255,0.10);
-    }
-    .formBtn{ width:100%; margin-top:10px; }
-    .formMessage{
-      margin-top:14px;
-      padding:14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,0.16);
-      background:rgba(255,255,255,0.08);
-      color:rgba(255,255,255,0.90);
-      line-height:1.6;
-      font-size:13px;
-      display:none;
-    }
-    .formMessage.show{ display:block; }
-
-    footer{
-      padding:70px 0 90px;
-      text-align:center;
-      font-size:13px;
-      color:var(--muted);
-      border-top:1px solid rgba(255,255,255,0.10);
-      background: rgba(0,0,0,0.05);
-    }
-
-    @media(max-width:980px){
-      .brand{min-width:auto}
-      .navRight{min-width:auto}
-      .heroGrid{grid-template-columns:1fr}
-      .zonesGrid{grid-template-columns:1fr}
-      .steps4{grid-template-columns:1fr 1fr}
-      .grid3{grid-template-columns:1fr}
-      .sessionsGrid{grid-template-columns:1fr}
-      .guideGrid{grid-template-columns:1fr}
-      .mappingGrid{grid-template-columns:1fr}
-      .kennismakenGrid{grid-template-columns:1fr}
-      .kennismakenIntro h2{font-size:34px}
-    }
-    @media(max-width:520px){
-      .steps4{grid-template-columns:1fr}
-      .hero h1{font-size:40px}
-    }
-  </style>
-</head>
-
-<body>
-
-<header>
-  <div class="wrap nav">
-    <div class="brand">
-      <img src="bywill-logo.png" alt="BYWILL logo">
-      <span>BYWILL</span>
-    </div>
-
-    <nav>
-      <a href="#start-de-reis">Start</a>
-      <a href="#chakra-zones">Lichaamszones</a>
-      <a href="#ademsessies">Adem</a>
-      <a href="#stoicisme">Stoïcisme</a>
-      <a href="#kennismaken">Kennismaken</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <div class="navRight">
-      <a class="btn" href="#kennismaken">Kennismaken</a>
-      <a class="btn primary" href="#contact">Inschrijven</a>
-    </div>
-  </div>
-</header>
-
-<main>
-
-  <section class="hero" id="home">
-    <div class="wrap heroGrid">
-      <div class="heroCard">
-        <h1>Aanwezig blijven terwijl het leven doorgaat</h1>
-        <p>
-          De Innerlijke Reis versterkt het regulerend vermogen van het lichaam via lichaamszones, ademhaling en stoïcisme.
-          Niet om jezelf te fixen, maar om te leren schakelen zonder jezelf kwijt te raken.
-        </p>
-        <div class="heroButtons">
-          <a class="btn primary" href="#start-de-reis">Start de Reis</a>
-          <a class="btn" href="#kennismaken">Kennismaken</a>
-        </div>
-        <div class="note">
-          BYWILL is begeleiding en training. Geen therapie. Geen quick fix.
-        </div>
-      </div>
-
-      <div class="heroLogo">
-        <img src="bywill-logo.png" alt="BYWILL logo groot">
-      </div>
-    </div>
-  </section>
-
-  <section id="start-de-reis" class="section">
-    <div class="wrap">
-      <div class="sectionHead">
-        <h2>Nu start de Reis</h2>
-        <p class="sectionLead">
-          Deze reis begint in het lichaam. In je basis. Van daaruit bouwen we op: meer ruimte, meer richting, meer aanwezigheid.
-        </p>
-      </div>
-
-      <div class="journeyFlow">
-
-        <div class="journeyBlock earth" id="reis-aarde">
-          <div class="journeyHead" data-toggle="reis-aarde-body">
-            <h3>Aarde – kernwaarden en basis</h3>
-            <p>De fundering: veiligheid, grenzen, stabiliteit. Klik voor verdieping.</p>
-          </div>
-          <div class="journeyBody" id="reis-aarde-body">
-            <p>
-              Dit gaat niet over zweven. Dit gaat over waar je lijf op bouwt.
-              Als je basis onrustig is, ga je sneller duwen, haasten of controleren.
-              In deze laag trainen we terugkeren naar rust en kernwaarden.
-            </p>
-            <p>
-              Koppeling: zone 1 bekkenbasis en zone 2 onderbuik.
-            </p>
-            <a class="btn" href="#zone-1" data-open="zone-1">Ga naar Zone 1</a>
-            <a class="btn" href="#zone-2" data-open="zone-2" style="margin-left:8px;">Ga naar Zone 2</a>
-          </div>
-        </div>
-
-        <div class="journeyBlock transition" id="reis-beweging">
-          <div class="journeyHead" data-toggle="reis-beweging-body">
-            <h3>Beweging – schakelen onder druk</h3>
-            <p>De schakel: tempo, spanning, controle. Klik voor verdieping.</p>
-          </div>
-          <div class="journeyBody" id="reis-beweging-body">
-            <p>
-              Hier zit de praktijk. Adem wordt een anker. Niet als truc, maar als terugkeer.
-              We trainen opschakelen zonder doorschieten en terugkeren zonder instorten.
-            </p>
-            <p>
-              Koppeling: zone 3 middenrif en zone 4 hartgebied.
-            </p>
-            <a class="btn" href="#zone-3" data-open="zone-3">Ga naar Zone 3</a>
-            <a class="btn" href="#zone-4" data-open="zone-4" style="margin-left:8px;">Ga naar Zone 4</a>
-          </div>
-        </div>
-
-        <div class="journeyBlock air" id="reis-lucht">
-          <div class="journeyHead" data-toggle="reis-lucht-body">
-            <h3>Lucht – overzicht en richting</h3>
-            <p>Helderheid: focus, zingeving, integratie. Klik voor verdieping.</p>
-          </div>
-          <div class="journeyBody" id="reis-lucht-body">
-            <p>
-              Dit is geen eindpunt. Dit is een staat waarin je helderder ziet en rustiger blijft.
-              Je doet de volgende juiste stap en laat ruis liggen.
-            </p>
-            <p>
-              Koppeling: zone 6 voorhoofd en zone 7 kruin.
-            </p>
-            <a class="btn" href="#zone-6" data-open="zone-6">Ga naar Zone 6</a>
-            <a class="btn" href="#zone-7" data-open="zone-7" style="margin-left:8px;">Ga naar Zone 7</a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="commitCard">
-        <h3>Commitment</h3>
-        <p>
-          Deze reis vraagt geen perfectie. Wel aanwezigheid.
-          Kleine herhaling, iedere dag. Zodat je systeem leert dat jij terugkomt.
-        </p>
-        <p class="commitStrong">
-          Jij committeert je aan jezelf.
-        </p>
-        <div style="margin-top:14px;">
-          <a class="btn primary" href="#contact">Ik wil een kennismaking</a>
-          <a class="btn" href="#chakra-zones" style="margin-left:8px;">Eerst de zones begrijpen</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="chakra-zones" class="section">
-    <div class="wrap">
-      <div class="sectionHead">
-        <h2>7 lichaamszones</h2>
-        <p class="sectionLead">
-          Praktisch werkmodel. 3 lagen per zone: Nederlandse naam, chakra naam en Latijn.
-          Klik op een zone om te openen.
-        </p>
-      </div>
-
-      <div class="zonesGrid">
-
-        <details class="zoneDetails" id="zone-1">
-          <summary>
-            <div class="zoneTop">
-              <div class="zoneNr">1</div>
-              <div class="zoneTitle">
-                <h3>Bekkenbasis</h3>
-                <div class="zoneMetaRow">
-                  <a class="chipLink" href="#zone-1" data-open="zone-1">Chakra Wortel</a>
-                  <a class="chipLink" href="#zone-1" data-open="zone-1">Latijn Diaphragma pelvis</a>
-                  <span class="pill">veiligheid</span><span class="pill">gronding</span><span class="pill">basis</span>
-                </div>
-              </div>
-            </div>
-            <p class="zoneText">Hier voelt het systeem of het veilig is. Basis van kernwaarden en grenzen.</p>
-          </summary>
-          <div class="zoneBody">
-            <p class="zoneTextLong">
-              Zone 1 is waar je lijf ja of nee zegt nog voordat je hoofd iets bedenkt.
-              Als deze laag onrustig is, ga je sneller duwen, haasten of controleren.
-              Als deze laag rustig is, ontstaat stabiliteit in tempo en keuzes.
-            </p>
-            <div class="zoneH4">Signalen</div>
-            <p class="zoneTextLong">Gejaagdheid, moeite met stil zijn, spanning in onderrug of bekkenbodem, sneller controle of dominantie.</p>
-            <div class="zoneH4">Terugkeer</div>
-            <p class="zoneTextLong">Voeten voelen. Uitademing iets langer. Aandacht laag houden. Klein en simpel.</p>
-            <div class="zoneH4">Oefening 30 seconden</div>
-            <p class="zoneTextLong">Druk voeten zacht in de vloer. Adem uit alsof je tempo 10 procent zakt. Kies 1 veilige volgende stap.</p>
-            <div class="zoneH4">Stoïcisme</div>
-            <p class="zoneTextLong">Invloed is niet controle. Ik kies 1 haalbare stap. De rest laat ik liggen.</p>
-            <a class="btn" href="#reis-aarde">Terug naar Aarde</a>
-          </div>
-        </details>
-
-        <details class="zoneDetails" id="zone-2">
-          <summary>
-            <div class="zoneTop">
-              <div class="zoneNr">2</div>
-              <div class="zoneTitle">
-                <h3>Onderbuik</h3>
-                <div class="zoneMetaRow">
-                  <a class="chipLink" href="#zone-2" data-open="zone-2">Chakra Sacraal</a>
-                  <a class="chipLink" href="#zone-2" data-open="zone-2">Latijn Abdomen inferius</a>
-                  <span class="pill">vitaliteit</span><span class="pill">beweging</span><span class="pill">drive</span>
-                </div>
-              </div>
-            </div>
-            <p class="zoneText">Levensstroom en veerkracht. Hier merk je druk of flow.</p>
-          </summary>
-          <div class="zoneBody">
-            <p class="zoneTextLong">
-              Zone 2 gaat over energie die wil stromen. Niet als moeten, maar als natuurlijke beweging.
-              Als het vastzit, voelt alles als duwen. Als het open is, komt er soepelheid in werk en contact.
-            </p>
-            <div class="zoneH4">Signalen</div>
-            <p class="zoneTextLong">Ongeduld, onrust in de buik, veel moeten, of juist leegte en futloosheid.</p>
-            <div class="zoneH4">Terugkeer</div>
-            <p class="zoneTextLong">Adem laag. Kleine beweging helpt. Geen prestatiedruk.</p>
-            <div class="zoneH4">Oefening</div>
-            <p class="zoneTextLong">3 rustige ademcycli. Bij elke uitademing laat je onderbuik zachter worden. Kies 1 actie die licht voelt.</p>
-            <div class="zoneH4">Stoïcisme</div>
-            <p class="zoneTextLong">Ik kies wat klopt, niet wat haast heeft.</p>
-            <a class="btn" href="#reis-aarde">Terug naar Aarde</a>
-          </div>
-        </details>
-
-        <details class="zoneDetails" id="zone-3">
-          <summary>
-            <div class="zoneTop">
-              <div class="zoneNr">3</div>
-              <div class="zoneTitle">
-                <h3>Middenrif</h3>
-                <div class="zoneMetaRow">
-                  <a class="chipLink" href="#zone-3" data-open="zone-3">Chakra Zonnevlecht</a>
-                  <a class="chipLink" href="#zone-3" data-open="zone-3">Latijn Diaphragma</a>
-                  <span class="pill">schakel</span><span class="pill">controle</span><span class="pill">spanning</span>
-                </div>
-              </div>
-            </div>
-            <p class="zoneText">De schakelzone. Hier schiet controle vaak aan.</p>
-          </summary>
-          <div class="zoneBody">
-            <p class="zoneTextLong">
-              Zone 3 is de schakel tussen onder en boven. Hier schiet controle vaak aan.
-              Adem wordt korter en denken gaat vooruit. Ruimte hier geeft direct meer rust en overzicht.
-            </p>
-            <div class="zoneH4">Signalen</div>
-            <p class="zoneTextLong">Strakke band om de ribben, hoog ademhalen, snel praten, alles willen fixen.</p>
-            <div class="zoneH4">Terugkeer</div>
-            <p class="zoneTextLong">Uitademing langer. Ruimte onder ribben. Zachter, niet groter.</p>
-            <div class="zoneH4">Oefening</div>
-            <p class="zoneTextLong">1 minuut. Adem uit 2 tellen langer dan in. Schouders laag. Daarna pas beslissen.</p>
-            <div class="zoneH4">Stoïcisme</div>
-            <p class="zoneTextLong">Eerst reguleren, dan kiezen.</p>
-            <a class="btn" href="#reis-beweging">Terug naar Beweging</a>
-          </div>
-        </details>
-
-        <details class="zoneDetails" id="zone-4">
-          <summary>
-            <div class="zoneTop">
-              <div class="zoneNr">4</div>
-              <div class="zoneTitle">
-                <h3>Hartgebied</h3>
-                <div class="zoneMetaRow">
-                  <a class="chipLink" href="#zone-4" data-open="zone-4">Chakra Hart</a>
-                  <a class="chipLink" href="#zone-4" data-open="zone-4">Latijn Regio pectoralis</a>
-                  <span class="pill">verbinding</span><span class="pill">draagkracht</span><span class="pill">open</span>
-                </div>
-              </div>
-            </div>
-            <p class="zoneText">Open en stevig tegelijk. Draagkracht zonder verharden.</p>
-          </summary>
-          <div class="zoneBody">
-            <p class="zoneTextLong">
-              Zone 4 is aanwezig blijven zonder dicht te klappen. Hier ontstaat verbinding met jezelf en de ander,
-              terwijl je toch grenzen houdt.
-            </p>
-            <div class="zoneH4">Signalen</div>
-            <p class="zoneTextLong">Druk op borst, defensief reageren, minder mildheid, sneller oordelen.</p>
-            <div class="zoneH4">Terugkeer</div>
-            <p class="zoneTextLong">Adem richting borst en rug. Schouders zacht. Herinner 1 kernwaarde.</p>
-            <div class="zoneH4">Oefening</div>
-            <p class="zoneTextLong">3 keer. Uitademing langer. Zin: ik blijf open en ik blijf stevig.</p>
-            <div class="zoneH4">Stoïcisme</div>
-            <p class="zoneTextLong">Ik reageer vanuit waarde, niet vanuit prikkel.</p>
-            <a class="btn" href="#reis-beweging">Terug naar Beweging</a>
-          </div>
-        </details>
-
-        <details class="zoneDetails" id="zone-5">
-          <summary>
-            <div class="zoneTop">
-              <div class="zoneNr">5</div>
-              <div class="zoneTitle">
-                <h3>Keel</h3>
-                <div class="zoneMetaRow">
-                  <a class="chipLink" href="#zone-5" data-open="zone-5">Chakra Keel</a>
-                  <a class="chipLink" href="#zone-5" data-open="zone-5">Latijn Cervix et larynx</a>
-                  <span class="pill">grenzen</span><span class="pill">expressie</span><span class="pill">waarheid</span>
-                </div>
-              </div>
-            </div>
-            <p class="zoneText">Waarheid in rust. Niet inslikken. Niet doorduwen.</p>
-          </summary>
-          <div class="zoneBody">
-            <p class="zoneTextLong">
-              Zone 5 gaat over helder spreken zonder spanning. Grenzen worden rustig en precies.
-            </p>
-            <div class="zoneH4">Signalen</div>
-            <p class="zoneTextLong">Spanning in kaak of nek, veel inslikken, of juist te direct en te hard.</p>
-            <div class="zoneH4">Terugkeer</div>
-            <p class="zoneTextLong">Ontspan kaken. Adem uit. Formuleer 1 korte waarheid.</p>
-            <div class="zoneH4">Oefening</div>
-            <p class="zoneTextLong">Schrijf 1 grens in 10 woorden. Zeg hem rustig. Daarna stilte.</p>
-            <div class="zoneH4">Stoïcisme</div>
-            <p class="zoneTextLong">Ik spreek helder, zonder te duwen.</p>
-          </div>
-        </details>
-
-        <details class="zoneDetails" id="zone-6">
-          <summary>
-            <div class="zoneTop">
-              <div class="zoneNr">6</div>
-              <div class="zoneTitle">
-                <h3>Voorhoofd</h3>
-                <div class="zoneMetaRow">
-                  <a class="chipLink" href="#zone-6" data-open="zone-6">Chakra Derde oog</a>
-                  <a class="chipLink" href="#zone-6" data-open="zone-6">Latijn Regio frontalis</a>
-                  <span class="pill">overzicht</span><span class="pill">focus</span><span class="pill">richting</span>
-                </div>
-              </div>
-            </div>
-            <p class="zoneText">Helder zien. Van ruis naar 1 stap.</p>
-          </summary>
-          <div class="zoneBody">
-            <p class="zoneTextLong">
-              Zone 6 is scherpte die helpt kiezen. Niet doordenken tot je vastloopt.
-            </p>
-            <div class="zoneH4">Signalen</div>
-            <p class="zoneTextLong">Overanalyse, eindeloos scenario denken, slecht kunnen stoppen.</p>
-            <div class="zoneH4">Terugkeer</div>
-            <p class="zoneTextLong">Eerst zone 3 reguleren. Daarna 1 vraag: wat is de volgende juiste stap.</p>
-            <div class="zoneH4">Oefening</div>
-            <p class="zoneTextLong">Kies 1 actie die 10 minuten kost. Doe alleen die. Stop.</p>
-            <div class="zoneH4">Stoïcisme</div>
-            <p class="zoneTextLong">Ik doe de volgende juiste stap.</p>
-            <a class="btn" href="#reis-lucht">Terug naar Lucht</a>
-          </div>
-        </details>
-
-        <details class="zoneDetails" id="zone-7">
-          <summary>
-            <div class="zoneTop">
-              <div class="zoneNr">7</div>
-              <div class="zoneTitle">
-                <h3>Kruin</h3>
-                <div class="zoneMetaRow">
-                  <a class="chipLink" href="#zone-7" data-open="zone-7">Chakra Kruin</a>
-                  <a class="chipLink" href="#zone-7" data-open="zone-7">Latijn Vertex cranii</a>
-                  <span class="pill">zingeving</span><span class="pill">perspectief</span><span class="pill">ruimte</span>
-                </div>
-              </div>
-            </div>
-            <p class="zoneText">Betekenis die in het lijf past. Richting in gedrag.</p>
-          </summary>
-          <div class="zoneBody">
-            <p class="zoneTextLong">
-              Zone 7 is zingeving als rust, niet als verhaal. Perspectief zonder verdwalen.
-            </p>
-            <div class="zoneH4">Signalen</div>
-            <p class="zoneTextLong">Verdrinken in plannen en concepten, of leegte zonder richting.</p>
-            <div class="zoneH4">Terugkeer</div>
-            <p class="zoneTextLong">Eerst terug naar zone 1 en 3. Daarna betekenis geven.</p>
-            <div class="zoneH4">Oefening</div>
-            <p class="zoneTextLong">Kies 1 kernwaarde. Koppel hem aan 1 concrete handeling vandaag.</p>
-            <div class="zoneH4">Stoïcisme</div>
-            <p class="zoneTextLong">Ik leef mijn waarde in gedrag, niet in woorden.</p>
-            <a class="btn" href="#reis-lucht">Terug naar Lucht</a>
-          </div>
-        </details>
-
-      </div>
-
-      <p class="note">Klik op de kaarten om te openen. Chips Chakra en Latijn openen dezelfde zone.</p>
-    </div>
-  </section>
-
-  <section id="ademsessies" class="section">
-    <div class="wrap">
-      <div class="sectionHead">
-        <h2>Adem sessies</h2>
-        <p class="sectionLead">
-          Adem is hier geen prestatie. Het is een ingang om regulerend vermogen te versterken.
-        </p>
-      </div>
-
-      <div class="grid3">
-        <article class="card">
-          <h3>Wat we trainen</h3>
-          <ul class="cleanList">
-            <li>Rust als bijeffect, niet als doel</li>
-            <li>Ademcontrole zonder forceren</li>
-            <li>Sneller terugkeren naar het lichaam</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Waarom het werkt</h3>
-          <ul class="cleanList">
-            <li>Adem koppelt aan het autonome zenuwstelsel</li>
-            <li>Ruimte in middenrif en borst helpt zakken</li>
-            <li>Herkennen van spanning via de 7 zones</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Hoe we het veilig houden</h3>
-          <ul class="cleanList">
-            <li>Langzaam opbouwen, vaste structuur</li>
-            <li>Regelmaat boven intensiteit</li>
-            <li>Altijd ruimte om terug te schakelen</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="sessionsGrid">
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Basis</div>
-            <h4>10 10 10</h4>
-          </div>
-          <p>Instap en reset. Je systeem landt en je aandacht keert terug naar het lichaam.</p>
-          <ul class="cleanList">
-            <li>Focus: zone 1 en 2</li>
-            <li>Doel: rustig ritme</li>
-          </ul>
-        </article>
-
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Opbouw</div>
-            <h4>15 15 15</h4>
-          </div>
-          <p>Meer draagkracht. Je blijft ontspannen terwijl adem dieper wordt.</p>
-          <ul class="cleanList">
-            <li>Focus: zone 3 en 4</li>
-            <li>Doel: ruimte onder ribben</li>
-          </ul>
-        </article>
-
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Verdieping</div>
-            <h4>20 20 20</h4>
-          </div>
-          <p>Stabiliteit onder spanning. Alleen als je basis rustig blijft.</p>
-          <ul class="cleanList">
-            <li>Focus: zone 4 5 6</li>
-            <li>Doel: blijven bij spanning</li>
-          </ul>
-        </article>
-
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Op maat</div>
-            <h4>Ritme op maat</h4>
-          </div>
-          <p>We passen het ritme aan op jouw lichaam. Criterium is goed gebleven, niet goed gedaan.</p>
-          <ul class="cleanList">
-            <li>Focus: dominante zone</li>
-            <li>Doel: regulatie in dagelijks leven</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="card soft" style="margin-top:18px;">
-        <h3>Adem in BYWILL</h3>
-        <div class="guideGrid">
-          <div class="stepMini"><div class="stepNr">1</div><div><strong>Voel eerst</strong><div class="stepTxt">Welke zone is nu actief</div></div></div>
-          <div class="stepMini"><div class="stepNr">2</div><div><strong>Adem rustig</strong><div class="stepTxt">Zacht ritme, lange uit</div></div></div>
-          <div class="stepMini"><div class="stepNr">3</div><div><strong>Schakel terug</strong><div class="stepTxt">Vooruit schieten is signaal</div></div></div>
-          <div class="stepMini"><div class="stepNr">4</div><div><strong>Integreer</strong><div class="stepTxt">Korte blokken in de dag</div></div></div>
-        </div>
-        <p class="note">Dit is begeleiding en training, geen therapie. Bij klachten of twijfel: overleg met arts of specialist.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="stoicisme" class="section">
-    <div class="wrap">
-      <div class="sectionHead">
-        <h2>Stoïcisme</h2>
-        <p class="sectionLead">
-          Nuchter kader om richting te houden. Pas echt bruikbaar als het gekoppeld is aan wat je in het lichaam voelt.
-        </p>
-      </div>
-
-      <div class="grid3">
-        <article class="card">
-          <h3>Onderscheid</h3>
-          <p>Wat is van jou en wat is niet van jou. Waar heb je invloed en waar niet.</p>
-          <ul class="cleanList">
-            <li>Invloed, geen controle</li>
-            <li>Actie waar het kan, loslaten waar het niet kan</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Waarden boven stemming</h3>
-          <p>Gevoel wisselt. Waarden blijven. Handelen vanuit kernwaarden, ook onder druk.</p>
-          <ul class="cleanList">
-            <li>Stevig zonder hard</li>
-            <li>Helder onder spanning</li>
-          </ul>
-        </article>
-        <article class="card">
-          <h3>Dagelijkse praktijk</h3>
-          <p>Kleine herhalingen: waarnemen, kiezen, handelen.</p>
-          <ul class="cleanList">
-            <li>Korte check ins</li>
-            <li>Richting houden zonder perfectie</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="mappingGrid">
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 3</span><span class="pill">adem</span></div>
-          <h3 style="font-size:16px;">Als controle opschakelt</h3>
-          <p>Eerst reguleren, dan kiezen. Grote beslissingen pas als je systeem zakt.</p>
-          <div class="mapLine"><strong>Zin</strong><span>Ik kies actie waar ik invloed heb, en laat de rest.</span></div>
-        </article>
-
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 5</span><span class="pill">grenzen</span></div>
-          <h3 style="font-size:16px;">Als je inhoudt of doordrukt</h3>
-          <p>Waarheid zonder hardheid. Eerlijk, rustig, precies.</p>
-          <div class="mapLine"><strong>Zin</strong><span>Ik spreek helder, zonder te duwen.</span></div>
-        </article>
-
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 6</span><span class="pill">overzicht</span></div>
-          <h3 style="font-size:16px;">Als denken overheerst</h3>
-          <p>Van ruis naar 1 stap. Wat is nu de volgende juiste actie.</p>
-          <div class="mapLine"><strong>Zin</strong><span>Ik doe de volgende juiste stap.</span></div>
-        </article>
-
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 4</span><span class="pill">draagkracht</span></div>
-          <h3 style="font-size:16px;">Als je sluit of verhardt</h3>
-          <p>Aanwezig blijven zonder jezelf te verliezen. Open en stevig tegelijk.</p>
-          <div class="mapLine"><strong>Zin</strong><span>Ik blijf open, en ik blijf stevig.</span></div>
-        </article>
-      </div>
-
-      <div class="card soft" style="margin-top:18px;">
-        <h3>De BYWILL check in</h3>
-        <p>30 seconden. 4 vragen. Iedere dag.</p>
-        <div class="guideGrid">
-          <div class="stepMini"><div class="stepNr">1</div><div><strong>Waar zit ik</strong><div class="stepTxt">Welke zone is actief</div></div></div>
-          <div class="stepMini"><div class="stepNr">2</div><div><strong>Wat is invloed</strong><div class="stepTxt">Wat kan ik doen, wat laat ik</div></div></div>
-          <div class="stepMini"><div class="stepNr">3</div><div><strong>Wat is de stap</strong><div class="stepTxt">1 kleine actie die klopt</div></div></div>
-          <div class="stepMini"><div class="stepNr">4</div><div><strong>Adem en ga</strong><div class="stepTxt">1 rustige uitademing</div></div></div>
-        </div>
-        <p class="note">Dit is begeleiding en training, geen therapie. Bij klachten of twijfel: overleg met arts of specialist.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="kennismaken" class="section">
-    <div class="wrap">
-      <div class="kennismakenIntro">
-        <h2>Kennismaken</h2>
-        <p class="lead">Geen intake. Geen oordeel. Wel voelen of dit past.</p>
-
-        <div class="kennismakenText">
-          <p>We zitten samen zonder agenda.</p>
-          <p>Jij hoeft niets te bewijzen. Ik luister, ook naar wat er tussen de woorden voelbaar wordt.</p>
-          <p>We kijken waar je nu bent, in je lichaam en in je leven.</p>
-          <p>Daarna kijken we rustig of deze reis klopt.</p>
-        </div>
-
-        <div class="kennismakenActions">
-          <a href="#contact" class="btn primary">Inschrijven voor gesprek</a>
-          <a href="#start-de-reis" class="btn">Eerst lezen wat dit vraagt</a>
-        </div>
-
-        <div class="smallNote">
-          Contact loopt via inschrijving met naam en telefoonnummer. Daarna bellen we kort om af te stemmen.
-        </div>
-      </div>
-
-      <div class="kennismakenGrid">
-        <div class="card soft">
-          <h3>Wat dit wel is</h3>
-          <ul class="cleanList">
-            <li>Open gesprek zonder oordeel</li>
-            <li>Ruimte om te voelen wat er gebeurt</li>
-            <li>Eerlijkheid over wat dit vraagt</li>
-            <li>Rustig afstemmen of het past</li>
-          </ul>
-
-          <h3 style="margin-top:18px;">Wat dit niet is</h3>
-          <ul class="cleanList">
-            <li>Geen therapie</li>
-            <li>Geen snelle oplossing</li>
-            <li>Geen verplichting</li>
-            <li>Geen praten om het praten</li>
-          </ul>
-
-          <div class="quoteCard">
-            Als je tijdens het lezen al iets voelt dat je niet kunt uitleggen, dan is dat vaak het begin van aanwezigheid.
-          </div>
-        </div>
-
-        <div class="card soft">
-          <h3>Waarom dit werkt</h3>
-          <ul class="cleanList">
-            <li>Je herkent spanning via de 7 zones</li>
-            <li>Je traint adem als anker</li>
-            <li>Stoïcisme geeft richting zonder zweverigheid</li>
-            <li>Je bouwt regulerend vermogen op</li>
-          </ul>
-
-          <div class="quoteCard">
-            Niet om beter te worden. Om verankerd te blijven terwijl het leven doorgaat.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="section">
-    <div class="wrap">
-      <div class="sectionHead">
-        <h2>Contact</h2>
-        <p class="sectionLead">
-          Contact verloopt via inschrijving. Alleen naam en telefoonnummer. Daarna bellen we kort.
-        </p>
-      </div>
-
-      <div class="contactCard">
-        <p class="contactText">Laat hieronder je naam en telefoonnummer achter. Ik neem contact op.</p>
-
-        <form class="contactForm" id="inschrijfForm" novalidate>
-          <div class="formField">
-            <label for="naam">Naam</label>
-            <input type="text" id="naam" name="naam" placeholder="Je naam" required minlength="2">
-          </div>
-
-          <div class="formField">
-            <label for="telefoon">Telefoonnummer</label>
-            <input type="tel" id="telefoon" name="telefoon" placeholder="Je telefoonnummer" required minlength="6">
-          </div>
-
-          <button type="submit" class="btn primary formBtn">Inschrijven</button>
-
-          <div class="formMessage" id="formMessage"></div>
-          <p class="note">Door je in te schrijven geef je toestemming om telefonisch contact op te nemen voor dit ene gesprek.</p>
-        </form>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <div class="wrap">
-    BYWILL.nu – Innerlijke Reis<br>
-    Lichaamszones · Adem · Stoïcisme
-  </div>
-</footer>
-
-<script>
-  (function(){
-    const form = document.getElementById("inschrijfForm");
-    const msg = document.getElementById("formMessage");
-
-    function setMessage(text){
-      msg.textContent = text;
-      msg.classList.add("show");
-    }
-
-    form.addEventListener("submit", function(e){
-      e.preventDefault();
-      msg.classList.remove("show");
-      msg.textContent = "";
-
-      const naam = document.getElementById("naam").value.trim();
-      const tel = document.getElementById("telefoon").value.trim();
-
-      if(naam.length < 2){
-        setMessage("Vul je naam in.");
-        return;
-      }
-      if(tel.length < 6){
-        setMessage("Vul een geldig telefoonnummer in.");
-        return;
-      }
-
-      setMessage("Dank je. Je inschrijving is ontvangen. We nemen telefonisch contact op.");
-      form.reset();
-    });
-
-    function openZone(id){
-      const el = document.getElementById(id);
-      if(!el) return;
-      if(el.tagName.toLowerCase() === "details"){
-        el.open = true;
-      }
-      el.scrollIntoView({behavior:"smooth", block:"start"});
-    }
-
-    document.addEventListener("click", function(e){
-      const a = e.target.closest("[data-open]");
-      if(a){
-        e.preventDefault();
-        openZone(a.getAttribute("data-open"));
-        return;
-      }
-      const head = e.target.closest("[data-toggle]");
-      if(head){
-        const target = document.getElementById(head.getAttribute("data-toggle"));
-        if(!target) return;
-        target.classList.toggle("show");
-      }
-    });
-  })();
-</script>
-
-</body>
-</html>
+:root{
+  --dark:#04060d;
+  --mid:#0b1431;
+  --light:#1f3570;
+  --lightTop:#7a90ff;
+
+  --text:#f5f7ff;
+  --muted:#cfd5ff;
+
+  --line:rgba(255,255,255,0.14);
+  --card:rgba(255,255,255,0.06);
+  --card2:rgba(255,255,255,0.09);
+
+  --shadow: 0 18px 50px rgba(0,0,0,0.45);
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color:var(--text);
+  background:linear-gradient(to top, var(--dark) 0%, var(--mid) 40%, var(--light) 75%, var(--lightTop) 100%);
+  min-height:100vh;
+}
+
+/* Sterren */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background-image:
+    radial-gradient(1px 1px at 25% 30%, rgba(255,255,255,.55), transparent 50%),
+    radial-gradient(1px 1px at 65% 20%, rgba(255,255,255,.45), transparent 50%),
+    radial-gradient(1px 1px at 50% 65%, rgba(255,255,255,.40), transparent 50%);
+  background-size:420px 420px;
+  opacity:.20;
+}
+
+.wrap{
+  max-width:1120px;
+  margin:auto;
+  padding:0 20px;
+  position:relative;
+}
+
+/* Header */
+.siteHeader{
+  position:sticky;
+  top:0;
+  z-index:10;
+  backdrop-filter: blur(12px);
+  background: rgba(10,18,48,0.35);
+  border-bottom:1px solid var(--line);
+}
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  padding:14px 0;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  min-width:220px;
+}
+.brand img{
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.05);
+  object-fit:cover;
+}
+.brand span{
+  font-family:Impact, Haettenschweiler, "Arial Black", sans-serif;
+  font-size:20px;
+  letter-spacing:1px;
+}
+
+.menu{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:6px;
+}
+.menu a{
+  color:var(--muted);
+  text-decoration:none;
+  font-size:14px;
+  padding:10px 12px;
+  border-radius:14px;
+  border:1px solid transparent;
+}
+.menu a:hover{
+  color:var(--text);
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.08);
+}
+
+.navRight{
+  min-width:220px;
+  display:flex;
+  justify-content:flex-end;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* Buttons */
+.btn{
+  display:inline-block;
+  padding:12px 18px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  color:var(--text);
+  text-decoration:none;
+  background:rgba(255,255,255,0.06);
+  font-weight:500;
+  cursor:pointer;
+}
+.btn:hover{ background:rgba(255,255,255,0.10); }
+.btn.primary{ background:rgba(255,255,255,0.16); }
+
+/* Sections */
+.section{ padding:96px 0; }
+.sectionHead{ margin-bottom:22px; max-width:78ch; }
+.sectionHead h2{
+  margin:0 0 10px 0;
+  font-weight:600;
+  font-size:34px;
+  letter-spacing:.2px;
+  line-height:1.2;
+}
+.sectionLead{
+  margin:0;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+
+/* Hero */
+.hero{ padding:92px 0 82px; }
+.heroGrid{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap:44px;
+  align-items:center;
+}
+.hero h1{
+  font-weight:600;
+  font-size:48px;
+  line-height:1.18;
+  letter-spacing:0.2px;
+  margin:0 0 18px 0;
+  max-width:22ch;
+}
+.hero p{
+  margin:0;
+  font-size:17px;
+  color:var(--muted);
+  line-height:1.8;
+  max-width:62ch;
+}
+.heroButtons{
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+.heroCard{
+  border:1px solid rgba(255,255,255,0.14);
+  background:rgba(255,255,255,0.06);
+  border-radius:28px;
+  padding:22px;
+  box-shadow: var(--shadow);
+}
+.heroLogo{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+.heroLogo img{
+  max-width:100%;
+  max-height:420px;
+  filter: drop-shadow(0 28px 60px rgba(0,0,0,0.55));
+}
+
+/* Grid helpers */
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.grid3{ display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+
+/* Cards */
+.card{
+  border:1px solid var(--line);
+  background:var(--card);
+  border-radius:22px;
+  padding:22px;
+}
+.card.soft{ background:var(--card2); }
+.card h3{
+  margin:0 0 10px 0;
+  font-size:18px;
+  font-weight:600;
+  letter-spacing:.2px;
+}
+.card p{
+  margin:0 0 10px 0;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:14px;
+}
+.card p:last-child{ margin-bottom:0; }
+.cleanList{
+  margin:0;
+  padding-left:18px;
+  color:var(--muted);
+  line-height:1.85;
+  font-size:14px;
+}
+.cleanList li{ margin:0 0 8px 0; }
+
+.pill{
+  display:inline-block;
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.05);
+  color:var(--muted);
+}
+
+/* Start de reis blocks */
+.journeyFlow{ margin-top:26px; display:grid; gap:18px; }
+.journeyBlock{ border-radius:26px; padding:26px; border:1px solid var(--line); background:var(--card); }
+.journeyBlock h3{ margin:0 0 10px 0; font-size:20px; font-weight:600; }
+.journeyBlock p{ margin:0 0 10px 0; color:var(--muted); line-height:1.8; font-size:14px; }
+.journeyBlock p:last-child{ margin-bottom:0; }
+.earth{ background:rgba(120,90,60,0.10); }
+.transition{ background:rgba(120,120,180,0.10); }
+.air{ background:rgba(180,200,255,0.12); }
+
+/* Zones */
+.zonesGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+.zoneTop{ display:flex; gap:12px; align-items:flex-start; margin-bottom:10px; }
+.zoneNr{
+  width:34px; height:34px; border-radius:12px;
+  display:grid; place-items:center;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.08);
+  font-weight:600;
+}
+.zoneTitle h3{ margin:0 0 8px 0; font-size:16px; font-weight:600; }
+.zoneText{ margin:0 0 12px 0; color:var(--muted); line-height:1.75; font-size:14px; }
+
+/* Adem sessies */
+.sessionsGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
+.sessionTop{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
+.sessionTag{
+  font-size:12px;
+  padding:6px 10px;
+  border-radius:999px;
+  border:1px solid var(--line);
+  background: rgba(255,255,255,0.05);
+  color:var(--muted);
+  white-space:nowrap;
+}
+
+/* Stoïcisme mapping */
+.mappingGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
+.mapTop{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
+.mapLine{
+  border-top:1px solid rgba(255,255,255,0.10);
+  padding-top:10px;
+  display:flex;
+  gap:10px;
+  flex-direction:column;
+}
+.mapLine strong{
+  font-size:12px;
+  color:rgba(255,255,255,0.80);
+  letter-spacing:.2px;
+  font-weight:600;
+}
+.mapLine span{
+  font-size:14px;
+  color:rgba(255,255,255,0.90);
+  line-height:1.6;
+}
+
+/* Kennismaken */
+.kennismakenGrid{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap:24px;
+  align-items:start;
+  margin-top:28px;
+}
+.kennismakenIntro{ max-width:72ch; }
+.kennismakenIntro h2{ font-size:40px; line-height:1.15; margin:0 0 14px 0; font-weight:600; }
+.kennismakenIntro .lead{ margin:0 0 14px 0; color:var(--muted); line-height:1.8; font-size:16px; max-width:68ch; }
+
+/* Contact */
+.contactCard{
+  margin-top:26px;
+  max-width:560px;
+  padding:30px;
+  border-radius:28px;
+  border:1px solid var(--line);
+  background:var(--card2);
+  box-shadow: var(--shadow);
+}
+.contactText{ font-size:15px; line-height:1.85; color:var(--muted); margin:0 0 10px 0; }
+.formField{ display:flex; flex-direction:column; margin-bottom:18px; }
+.formField label{ font-size:13px; margin-bottom:6px; color:rgba(255,255,255,0.85); }
+.formField input{
+  padding:14px 16px;
+  border-radius:14px;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,0.06);
+  color:var(--text);
+  font-size:15px;
+}
+.formField input::placeholder{ color:rgba(255,255,255,0.45); }
+.formField input:focus{
+  outline:none;
+  border-color:rgba(255,255,255,0.35);
+  background:rgba(255,255,255,0.10);
+}
+.formBtn{ width:100%; margin-top:10px; }
+.formMessage{
+  margin-top:14px;
+  padding:14px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(255,255,255,0.08);
+  color:rgba(255,255,255,0.90);
+  line-height:1.6;
+  font-size:13px;
+  display:none;
+}
+.formMessage.show{ display:block; }
+
+.siteFooter{
+  padding:70px 0 90px;
+  text-align:center;
+  font-size:13px;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.05);
+}
+
+/* Responsive */
+@media(max-width:980px){
+  .brand{min-width:auto}
+  .navRight{min-width:auto}
+  .heroGrid{grid-template-columns:1fr}
+  .zonesGrid{grid-template-columns:1fr}
+  .grid3{grid-template-columns:1fr}
+  .sessionsGrid{grid-template-columns:1fr}
+  .mappingGrid{grid-template-columns:1fr}
+  .kennismakenGrid{grid-template-columns:1fr}
+  .kennismakenIntro h2{font-size:34px}
+}
+@media(max-width:520px){
+  .hero h1{font-size:40px}
+}
