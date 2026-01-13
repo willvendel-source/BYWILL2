@@ -160,7 +160,7 @@
       line-height:1.18;
       letter-spacing:0.2px;
       margin:0 0 18px 0;
-      max-width:20ch;
+      max-width:22ch;
     }
     .hero p{
       margin:0;
@@ -193,7 +193,6 @@
       filter: drop-shadow(0 28px 60px rgba(0,0,0,0.55));
     }
 
-    .grid2{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
     .grid3{ display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
 
     .card{
@@ -244,18 +243,17 @@
     .transition{ background:rgba(120,120,180,0.10); }
     .air{ background:rgba(180,200,255,0.12); }
 
-    .commitCard{
-      margin-top:18px;
-      border-radius:26px;
-      padding:26px;
-      border:1px solid var(--line);
-      background:var(--card2);
+    details summary{
+      cursor:pointer;
+      list-style:none;
     }
-    .commitCard h3{ margin:0 0 10px 0; font-size:20px; font-weight:600; }
-    .commitCard p{ margin:0 0 10px 0; color:var(--muted); line-height:1.85; font-size:14px; }
-    .commitStrong{ color:rgba(255,255,255,0.95); font-weight:500; font-size:15px; }
+    details summary::-webkit-details-marker{ display:none; }
+    details summary .pill{ opacity:.65; }
+    details summary:hover .pill{ opacity:1; }
+    details[open] summary .pill{ opacity:.9; }
 
     .zonesGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(3, 1fr); gap:18px; }
+
     .zoneTop{ display:flex; gap:12px; align-items:flex-start; margin-bottom:10px; }
     .zoneNr{
       width:34px; height:34px; border-radius:12px;
@@ -263,132 +261,27 @@
       border:1px solid var(--line);
       background: rgba(255,255,255,0.08);
       font-weight:600;
-    }
-    .zoneTitle h3{ margin:0 0 8px 0; font-size:16px; font-weight:600; }
-    .zoneText{ margin:0 0 12px 0; color:var(--muted); line-height:1.75; font-size:14px; }
-
-    .steps4{ margin-top:14px; display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-    .stepMini{
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      border-radius:18px;
-      padding:14px;
-      display:flex;
-      gap:10px;
-      align-items:flex-start;
-    }
-    .stepNr{
-      width:30px; height:30px; border-radius:12px;
-      display:grid; place-items:center;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.08);
-      font-weight:600;
       flex:0 0 auto;
     }
-    .stepTxt{ margin-top:4px; font-size:12px; color:var(--muted); line-height:1.5; }
+    .zoneTitle h3{ margin:0 0 6px 0; font-size:16px; font-weight:600; }
+    .zoneText{ margin:0 0 12px 0; color:var(--muted); line-height:1.75; font-size:14px; }
+
+    .subLine{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      margin-top:6px;
+      color:rgba(255,255,255,0.85);
+      font-size:12px;
+    }
+    .subLine span{
+      border:1px solid rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.05);
+      padding:5px 8px;
+      border-radius:999px;
+    }
 
     .note{ margin-top:12px; font-size:12px; color:rgba(255,255,255,0.65); line-height:1.6; }
-
-    .sessionsGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(2, 1fr); gap:18px; }
-    .sessionTop{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:10px; }
-    .sessionTag{
-      font-size:12px;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background: rgba(255,255,255,0.05);
-      color:var(--muted);
-      white-space:nowrap;
-    }
-    .sessionCard h4{ margin:0; font-weight:600; letter-spacing:.3px; font-size:18px; }
-
-    .guideGrid{ margin-top:14px; display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; }
-
-    .mappingGrid{ margin-top:18px; display:grid; grid-template-columns:repeat(2,1fr); gap:18px; }
-    .mapTop{ display:flex; gap:8px; flex-wrap:wrap; margin-bottom:10px; }
-    .mapLine{
-      border-top:1px solid rgba(255,255,255,0.10);
-      padding-top:10px;
-      display:flex;
-      gap:10px;
-      flex-direction:column;
-    }
-    .mapLine strong{
-      font-size:12px;
-      color:rgba(255,255,255,0.80);
-      letter-spacing:.2px;
-      font-weight:600;
-    }
-    .mapLine span{
-      font-size:14px;
-      color:rgba(255,255,255,0.90);
-      line-height:1.6;
-    }
-
-    .kennismakenGrid{
-      display:grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap:24px;
-      align-items:start;
-      margin-top:28px;
-    }
-    .kennismakenIntro{ max-width:72ch; }
-    .kennismakenIntro h2{ font-size:40px; line-height:1.15; margin:0 0 14px 0; font-weight:600; }
-    .kennismakenIntro .lead{ margin:0 0 14px 0; color:var(--muted); line-height:1.8; font-size:16px; max-width:68ch; }
-    .kennismakenText{ margin-top:18px; display:grid; gap:12px; }
-    .kennismakenText p{ margin:0; color:rgba(255,255,255,0.92); line-height:1.85; font-size:15px; max-width:72ch; }
-    .kennismakenActions{ margin-top:22px; display:flex; gap:12px; flex-wrap:wrap; }
-    .smallNote{ margin-top:10px; font-size:13px; color:rgba(255,255,255,0.65); line-height:1.6; }
-    .quoteCard{
-      margin-top:18px;
-      border:1px solid rgba(255,255,255,0.12);
-      background:rgba(255,255,255,0.06);
-      border-radius:22px;
-      padding:18px;
-      color:rgba(255,255,255,0.92);
-      line-height:1.85;
-      font-size:15px;
-    }
-
-    .contactCard{
-      margin-top:26px;
-      max-width:560px;
-      padding:30px;
-      border-radius:28px;
-      border:1px solid var(--line);
-      background:var(--card2);
-      box-shadow: var(--shadow);
-    }
-    .contactText{ font-size:15px; line-height:1.85; color:var(--muted); margin:0 0 10px 0; }
-    .formField{ display:flex; flex-direction:column; margin-bottom:18px; }
-    .formField label{ font-size:13px; margin-bottom:6px; color:rgba(255,255,255,0.85); }
-    .formField input{
-      padding:14px 16px;
-      border-radius:14px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,0.06);
-      color:var(--text);
-      font-size:15px;
-    }
-    .formField input::placeholder{ color:rgba(255,255,255,0.45); }
-    .formField input:focus{
-      outline:none;
-      border-color:rgba(255,255,255,0.35);
-      background:rgba(255,255,255,0.10);
-    }
-    .formBtn{ width:100%; margin-top:10px; }
-    .formMessage{
-      margin-top:14px;
-      padding:14px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,0.16);
-      background:rgba(255,255,255,0.08);
-      color:rgba(255,255,255,0.90);
-      line-height:1.6;
-      font-size:13px;
-      display:none;
-    }
-    .formMessage.show{ display:block; }
 
     footer{
       padding:70px 0 90px;
@@ -404,16 +297,9 @@
       .navRight{min-width:auto}
       .heroGrid{grid-template-columns:1fr}
       .zonesGrid{grid-template-columns:1fr}
-      .steps4{grid-template-columns:1fr 1fr}
       .grid3{grid-template-columns:1fr}
-      .sessionsGrid{grid-template-columns:1fr}
-      .guideGrid{grid-template-columns:1fr}
-      .mappingGrid{grid-template-columns:1fr}
-      .kennismakenGrid{grid-template-columns:1fr}
-      .kennismakenIntro h2{font-size:34px}
     }
     @media(max-width:520px){
-      .steps4{grid-template-columns:1fr}
       .hero h1{font-size:40px}
     }
   </style>
@@ -430,7 +316,7 @@
 
     <nav>
       <a href="#start-de-reis">Start</a>
-      <a href="#chakra-zones">Chakra</a>
+      <a href="#chakra-zones">Lichaamszones</a>
       <a href="#ademsessies">Adem</a>
       <a href="#stoicisme">Stoïcisme</a>
       <a href="#kennismaken">Kennismaken</a>
@@ -451,15 +337,15 @@
       <div class="heroCard">
         <h1>Aanwezig blijven terwijl het leven doorgaat</h1>
         <p>
-          De Innerlijke Reis versterkt het regulerend vermogen van het lichaam via de belichaamde samenstelling
-          van chakra’s, ademhaling en stoïcisme. Niet om je te veranderen, maar om te leren schakelen zonder jezelf kwijt te raken.
+          De Innerlijke Reis versterkt het regulerend vermogen van het lichaam via lichaamszones, ademhaling en stoïcisme.
+          Niet om je te veranderen, maar om te leren schakelen zonder jezelf kwijt te raken.
         </p>
         <div class="heroButtons">
           <a class="btn primary" href="#start-de-reis">Start de Reis</a>
           <a class="btn" href="#kennismaken">Kennismaken</a>
         </div>
         <div class="note">
-          BYWILL is begeleiding en training. Geen therapie. Geen quick fix. Wel volledige aanwezigheid.
+          BYWILL is begeleiding en training. Geen therapie. Geen quick fix. Wel praktische aanwezigheid.
         </div>
       </div>
 
@@ -474,61 +360,101 @@
       <div class="sectionHead">
         <h2>Nu start de Reis</h2>
         <p class="sectionLead">
-          Deze reis begint niet in je hoofd. Ze begint in het lichaam. In de zwaarte. In de aarde.
-          Van daaruit beweeg je richting ruimte en licht.
+          Deze reis begint niet in je hoofd. Ze begint in het lichaam.
+          Van daaruit beweeg je van basis naar ruimte en richting.
         </p>
       </div>
 
       <div class="journeyFlow">
-        <div class="journeyBlock earth">
-          <h3>Aarde – waar je nu bent</h3>
-          <p>
-            Je komt hier niet omdat alles rustig is. Je komt omdat je voelt dat er iets schuurt.
-            Spanning, onrust, druk, vermoeidheid of richtingloosheid.
-          </p>
-          <p>
-            In deze fase leer je niet oplossen, maar herkennen waar het zich in jouw lichaam vastzet.
-            Dat vraagt eerlijkheid. En aanwezigheid.
-          </p>
-        </div>
 
-        <div class="journeyBlock transition">
-          <h3>Beweging – het midden</h3>
-          <p>
-            Hier begint het echte werk. Adem wordt geen oefening, maar een anker.
-            Chakra’s worden geen theorie, maar voelbare zones.
-          </p>
-          <p>
-            Dit is de fase waarin je soms wilt afhaken. Niet omdat het te zwaar is,
-            maar omdat je precies raakt aan wat gezien wil worden.
-          </p>
-        </div>
+        <details class="journeyBlock earth" id="reis-aarde">
+          <summary>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+              <h3 style="margin:0;">Aarde – kernwaarden</h3>
+              <span class="pill">klik voor verdieping</span>
+            </div>
+          </summary>
 
-        <div class="journeyBlock air">
-          <h3>Lucht – waar je kunt komen</h3>
           <p>
-            Niet zwevend. Niet losgezongen. Maar helder, open en aanwezig.
+            Dit is je fundament. Hier zitten kernwaarden, grenzen en basisveiligheid.
+            Vanuit deze laag ontstaan kracht, dominantie en richting, of juist onrust.
           </p>
+
+          <div class="card soft" style="margin-top:14px;">
+            <h3 style="margin:0 0 10px 0;font-size:16px;">Koppeling</h3>
+            <p style="margin:0;color:var(--muted);line-height:1.8;font-size:14px;">
+              Dit hoort primair bij lichaamszone 1.
+            </p>
+            <div style="margin-top:12px;">
+              <a class="btn" href="#zone-1">Ga naar zone 1</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="journeyBlock transition" id="reis-beweging">
+          <summary>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+              <h3 style="margin:0;">Beweging – het midden</h3>
+              <span class="pill">klik voor verdieping</span>
+            </div>
+          </summary>
+
           <p>
-            Je voelt ruimte in je lichaam, overzicht in je hoofd en richting in je handelen.
+            Hier ga je van begrijpen naar doen. Adem wordt een anker en de zones worden voelbaar.
+            Je traint schakelen zonder forceren.
+          </p>
+
+          <div class="card soft" style="margin-top:14px;">
+            <h3 style="margin:0 0 10px 0;font-size:16px;">Koppeling</h3>
+            <p style="margin:0;color:var(--muted);line-height:1.8;font-size:14px;">
+              Dit hoort bij zone 2 en zone 3.
+            </p>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+              <a class="btn" href="#zone-2">Ga naar zone 2</a>
+              <a class="btn" href="#zone-3">Ga naar zone 3</a>
+            </div>
+          </div>
+        </details>
+
+        <details class="journeyBlock air" id="reis-lucht">
+          <summary>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;">
+              <h3 style="margin:0;">Lucht – ruimte en richting</h3>
+              <span class="pill">klik voor verdieping</span>
+            </div>
+          </summary>
+
+          <p>
+            Je houdt overzicht, blijft open en handelt helder.
             Niet omdat alles weg is, maar omdat jij kunt blijven.
           </p>
-        </div>
+
+          <div class="card soft" style="margin-top:14px;">
+            <h3 style="margin:0 0 10px 0;font-size:16px;">Koppeling</h3>
+            <p style="margin:0;color:var(--muted);line-height:1.8;font-size:14px;">
+              Dit hoort bij zone 6 en zone 7.
+            </p>
+            <div style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;">
+              <a class="btn" href="#zone-6">Ga naar zone 6</a>
+              <a class="btn" href="#zone-7">Ga naar zone 7</a>
+            </div>
+          </div>
+        </details>
+
       </div>
 
       <div class="commitCard">
         <h3>Commitment</h3>
         <p>
-          Deze reis vraagt geen perfectie. Wel volledige aanwezigheid.
-          Niet 1 seconde missen. Niet omdat wij dat vragen, maar omdat het moment dat je overslaat
-          precies dat moment kan zijn waarop iets in jou gezien wil worden.
+          Deze reis vraagt geen perfectie. Wel aanwezigheid.
+          Niet omdat iemand dat eist, maar omdat juist de gemiste momenten vaak het signaal zijn.
         </p>
         <p class="commitStrong">
-          Jij committeert je niet aan BYWILL. Jij committeert je aan jezelf.
+          Jij committeert je aan jezelf.
         </p>
         <div style="margin-top:14px;">
-          <a class="btn primary" href="#contact">Ik ga deze reis aan</a>
-          <a class="btn" href="#kennismaken" style="margin-left:8px;">Eerst kennismaken</a>
+          <a class="btn primary" href="#contact">Ik wil kennismaken</a>
+          <a class="btn" href="#chakra-zones" style="margin-left:8px;">Bekijk de zones</a>
         </div>
       </div>
     </div>
@@ -537,151 +463,141 @@
   <section id="chakra-zones" class="section">
     <div class="wrap">
       <div class="sectionHead">
-        <h2>Chakra – 7 lichaamszones</h2>
+        <h2>7 lichaamszones</h2>
         <p class="sectionLead">
-          Geen geloof en geen zweverigheid. Dit is een praktisch werkmodel om te voelen waar spanning,
-          veiligheid en richting zich in het lichaam laten zien. We gebruiken het om te herkennen,
-          te reguleren en te integreren.
+          Praktisch werkmodel. 3 lagen per zone: Nederlandse naam, chakra naam en Latijn.
         </p>
       </div>
 
       <div class="zonesGrid">
-        <article class="card">
+
+        <article class="card" id="zone-1">
           <div class="zoneTop">
             <div class="zoneNr">1</div>
             <div class="zoneTitle">
               <h3>Bekkenbasis</h3>
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <span class="pill">Aarde</span><span class="pill">veiligheid</span><span class="pill">gronding</span>
+              <div class="subLine">
+                <span>Chakra: Wortel</span>
+                <span>Latijn: Diaphragma pelvis</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                <span class="pill">veiligheid</span><span class="pill">gronding</span><span class="pill">basis</span>
               </div>
             </div>
           </div>
-          <p class="zoneText">Hier voelt het systeem of het veilig is. Onrust toont zich vaak als gejaagdheid of moeite met stil zijn.</p>
-          <ul class="cleanList">
-            <li>Herkennen: op drift of gegrond</li>
-            <li>Terugkeer: voeten, bekken, onderlijf</li>
-          </ul>
+          <p class="zoneText">Hier voelt het systeem of het veilig is. Dit is de basislaag van kernwaarden en grenzen.</p>
+          <a class="btn" href="#reis-aarde">Terug naar Aarde</a>
         </article>
 
-        <article class="card">
+        <article class="card" id="zone-2">
           <div class="zoneTop">
             <div class="zoneNr">2</div>
             <div class="zoneTitle">
               <h3>Onderbuik</h3>
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <span class="pill">Water</span><span class="pill">vitaliteit</span><span class="pill">beweging</span>
+              <div class="subLine">
+                <span>Chakra: Sacraal</span>
+                <span>Latijn: Abdomen inferius</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                <span class="pill">vitaliteit</span><span class="pill">beweging</span><span class="pill">drive</span>
               </div>
             </div>
           </div>
-          <p class="zoneText">Levensstroom en veerkracht. Bij spanning zie je vaak onrust, ongeduld of een moeten.</p>
-          <ul class="cleanList">
-            <li>Voelen: drive of druk</li>
-            <li>Adem: flow terugbrengen zonder forceren</li>
-          </ul>
+          <p class="zoneText">Levensstroom en veerkracht. Hier merk je druk of flow.</p>
+          <a class="btn" href="#reis-beweging">Terug naar Beweging</a>
         </article>
 
-        <article class="card">
+        <article class="card" id="zone-3">
           <div class="zoneTop">
             <div class="zoneNr">3</div>
             <div class="zoneTitle">
               <h3>Middenrif</h3>
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <span class="pill">Vuur</span><span class="pill">controle</span><span class="pill">schakel</span>
+              <div class="subLine">
+                <span>Chakra: Zonnevlecht</span>
+                <span>Latijn: Diaphragma</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                <span class="pill">schakel</span><span class="pill">controle</span><span class="pill">spanning</span>
               </div>
             </div>
           </div>
-          <p class="zoneText">Hier klikt spanning vaak vast. Adem wordt hoger, denken gaat vooruit. Hier trainen we schakelen.</p>
-          <ul class="cleanList">
-            <li>Bewaken: opschakelen zonder doorschieten</li>
-            <li>Trainen: ruimte onder ribben</li>
-          </ul>
+          <p class="zoneText">Hier klikt spanning vaak vast. Adem wordt hoger. Hier trainen we schakelen.</p>
+          <a class="btn" href="#reis-beweging">Terug naar Beweging</a>
         </article>
 
-        <article class="card">
+        <article class="card" id="zone-4">
           <div class="zoneTop">
             <div class="zoneNr">4</div>
             <div class="zoneTitle">
               <h3>Hartgebied</h3>
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <span class="pill">Lucht</span><span class="pill">verbinding</span><span class="pill">draagkracht</span>
+              <div class="subLine">
+                <span>Chakra: Hart</span>
+                <span>Latijn: Regio pectoralis</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                <span class="pill">verbinding</span><span class="pill">draagkracht</span><span class="pill">open</span>
               </div>
             </div>
           </div>
-          <p class="zoneText">Contact met jezelf en de ander. Bij regulatie wordt dit gebied ruimer. Mildheid zonder zwakte.</p>
-          <ul class="cleanList">
-            <li>Blijven: spanning dragen zonder verharden</li>
-            <li>Adem: brug tussen middenrif en hart</li>
-          </ul>
+          <p class="zoneText">Contact met jezelf en de ander. Open en stevig tegelijk.</p>
         </article>
 
-        <article class="card">
+        <article class="card" id="zone-5">
           <div class="zoneTop">
             <div class="zoneNr">5</div>
             <div class="zoneTitle">
               <h3>Keel</h3>
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
-                <span class="pill">expressie</span><span class="pill">grenzen</span><span class="pill">waarheid</span>
+              <div class="subLine">
+                <span>Chakra: Keel</span>
+                <span>Latijn: Cervix et larynx</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
+                <span class="pill">grenzen</span><span class="pill">expressie</span><span class="pill">waarheid</span>
               </div>
             </div>
           </div>
-          <p class="zoneText">Je merkt hier of je inhoudt of doordrukt. Spanning zit vaak in kaken, nek, stem.</p>
-          <ul class="cleanList">
-            <li>Spreken vanuit rust, niet vanuit spanning</li>
-            <li>Stoïcisme: eerlijk zonder hardheid</li>
-          </ul>
+          <p class="zoneText">Je merkt hier of je inhoudt of doordrukt. Eerlijk zonder hardheid.</p>
         </article>
 
-        <article class="card">
+        <article class="card" id="zone-6">
           <div class="zoneTop">
             <div class="zoneNr">6</div>
             <div class="zoneTitle">
               <h3>Voorhoofd</h3>
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <div class="subLine">
+                <span>Chakra: Derde oog</span>
+                <span>Latijn: Regio frontalis</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
                 <span class="pill">overzicht</span><span class="pill">focus</span><span class="pill">richting</span>
               </div>
             </div>
           </div>
-          <p class="zoneText">Denken mag helder zijn, niet overheersend. Het verschil tussen scherpte en overanalyse.</p>
-          <ul class="cleanList">
-            <li>Onderscheid: invloed en loslaten</li>
-            <li>Keuze: 1 stap die klopt</li>
-          </ul>
+          <p class="zoneText">Denken mag helder zijn, niet overheersend. Van ruis naar 1 stap.</p>
+          <a class="btn" href="#reis-lucht">Terug naar Lucht</a>
         </article>
 
-        <article class="card">
+        <article class="card" id="zone-7">
           <div class="zoneTop">
             <div class="zoneNr">7</div>
             <div class="zoneTitle">
               <h3>Kruin</h3>
-              <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <div class="subLine">
+                <span>Chakra: Kruin</span>
+                <span>Latijn: Vertex cranii</span>
+              </div>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;">
                 <span class="pill">zingeving</span><span class="pill">perspectief</span><span class="pill">ruimte</span>
               </div>
             </div>
           </div>
-          <p class="zoneText">Ruimte in je systeem. Betekenis zonder te zweven.</p>
-          <ul class="cleanList">
-            <li>Openheid zonder verdwalen</li>
-            <li>Integratie: betekenis in gedrag</li>
-          </ul>
+          <p class="zoneText">Betekenis zonder te zweven. Ruimte in je systeem en richting in gedrag.</p>
+          <a class="btn" href="#reis-lucht">Terug naar Lucht</a>
         </article>
+
       </div>
 
-      <div class="card soft" style="margin-top:18px;">
-        <h3>Wat we hiermee doen in de reis</h3>
-        <p>
-          Je leert herkennen in welke zone het systeem opschakelt. Daarna trainen we adem en aandacht om terug te keren.
-          Stoïcisme geeft richting, zodat voelen niet stuurloos wordt.
-        </p>
-
-        <div class="steps4">
-          <div class="stepMini"><div class="stepNr">1</div><div><strong>Detecteren</strong><div class="stepTxt">Waar gebeurt het in het lichaam</div></div></div>
-          <div class="stepMini"><div class="stepNr">2</div><div><strong>Reguleren</strong><div class="stepTxt">Adem als anker, geen truc</div></div></div>
-          <div class="stepMini"><div class="stepNr">3</div><div><strong>Verdiepen</strong><div class="stepTxt">Patronen herkennen en dragen</div></div></div>
-          <div class="stepMini"><div class="stepNr">4</div><div><strong>Integreren</strong><div class="stepTxt">Schakelvermogen in werk en leven</div></div></div>
-        </div>
-
-        <p class="note">Dit is begeleiding en training. Geen therapie. Bij klachten of twijfel: overleg met arts of specialist.</p>
-      </div>
+      <p class="note">Nu werken de reisblokken en zones als 1 geheel: klikken en springen.</p>
     </div>
   </section>
 
@@ -690,104 +606,23 @@
       <div class="sectionHead">
         <h2>Adem sessies</h2>
         <p class="sectionLead">
-          Adem is bij BYWILL geen truc en geen prestatie. Het is een ingang om het regulerend vermogen te versterken.
-          We trainen schakelvermogen: opschakelen zonder doorschieten, en terugkeren zonder instorten.
+          Adem is een ingang om regulerend vermogen te versterken. Eenvoudig, herhaalbaar, zonder prestatie.
         </p>
       </div>
 
       <div class="grid3">
         <article class="card">
-          <h3>Wat we trainen</h3>
-          <ul class="cleanList">
-            <li>Rust als bijeffect, niet als doel</li>
-            <li>Ademcontrole zonder forceren</li>
-            <li>Sneller terugkeren naar het lichaam</li>
-          </ul>
+          <h3>Basis</h3>
+          <p>Start rustig. Ritme boven intensiteit.</p>
         </article>
         <article class="card">
-          <h3>Waarom het werkt</h3>
-          <ul class="cleanList">
-            <li>Adem koppelt aan het autonome zenuwstelsel</li>
-            <li>Ruimte in middenrif en borst helpt zakken</li>
-            <li>Herkennen van spanning via de 7 zones</li>
-          </ul>
+          <h3>Opbouw</h3>
+          <p>Meer draagkracht. Schakelen zonder doorschieten.</p>
         </article>
         <article class="card">
-          <h3>Hoe we het veilig houden</h3>
-          <ul class="cleanList">
-            <li>Langzaam opbouwen, vaste structuur</li>
-            <li>Regelmaat boven intensiteit</li>
-            <li>Altijd ruimte om terug te schakelen</li>
-          </ul>
+          <h3>Integratie</h3>
+          <p>Korte blokken in de dag. Je blijft aanwezig.</p>
         </article>
-      </div>
-
-      <div class="card soft" style="margin-top:18px;">
-        <h3>Sessiestructuur</h3>
-        <p>
-          We werken met korte, herhaalbare blokken. De getallen zijn een ritme. Jij blijft luisteren naar je lichaam.
-        </p>
-      </div>
-
-      <div class="sessionsGrid">
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Basis</div>
-            <h4>10 10 10</h4>
-          </div>
-          <p>Instap en reset. Je systeem landt en je aandacht keert terug naar het lichaam.</p>
-          <ul class="cleanList">
-            <li>Focus: bekkenbasis en onderbuik</li>
-            <li>Doel: rustig ritme, geen druk</li>
-          </ul>
-        </article>
-
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Opbouw</div>
-            <h4>15 15 15</h4>
-          </div>
-          <p>Meer draagkracht. Je blijft ontspannen terwijl adem dieper wordt. Hier train je schakelen.</p>
-          <ul class="cleanList">
-            <li>Focus: middenrif en hartgebied</li>
-            <li>Doel: ruimte onder ribben, zacht tempo</li>
-          </ul>
-        </article>
-
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Verdieping</div>
-            <h4>20 20 20</h4>
-          </div>
-          <p>Stabiliteit onder spanning. Alleen als je basis rustig blijft. Niet forceren.</p>
-          <ul class="cleanList">
-            <li>Focus: hart, keel, voorhoofd</li>
-            <li>Doel: blijven bij spanning</li>
-          </ul>
-        </article>
-
-        <article class="card sessionCard">
-          <div class="sessionTop">
-            <div class="sessionTag">Persoonlijk</div>
-            <h4>Ritme op maat</h4>
-          </div>
-          <p>We passen het ritme aan op jouw lichaam. Het criterium is niet goed gedaan, maar goed gebleven.</p>
-          <ul class="cleanList">
-            <li>Focus: jouw dominante zone</li>
-            <li>Doel: regulatie in het dagelijks leven</li>
-          </ul>
-        </article>
-      </div>
-
-      <div class="card soft" style="margin-top:18px;">
-        <h3>Adem in BYWILL</h3>
-        <div class="guideGrid">
-          <div class="stepMini"><div class="stepNr">1</div><div><strong>Voel eerst</strong><div class="stepTxt">Welke zone is nu het meest actief</div></div></div>
-          <div class="stepMini"><div class="stepNr">2</div><div><strong>Adem rustig</strong><div class="stepTxt">Zacht ritme, ruimte in uitademing</div></div></div>
-          <div class="stepMini"><div class="stepNr">3</div><div><strong>Schakel terug</strong><div class="stepTxt">Vooruit schieten is signaal</div></div></div>
-          <div class="stepMini"><div class="stepNr">4</div><div><strong>Integreer</strong><div class="stepTxt">Korte blokken in de dag</div></div></div>
-        </div>
-        <p class="note">Disclaimer: dit is geen medische behandeling. Bij klachten of twijfel: overleg met arts of specialist.</p>
       </div>
     </div>
   </section>
@@ -797,121 +632,41 @@
       <div class="sectionHead">
         <h2>Stoïcisme</h2>
         <p class="sectionLead">
-          Stoïcisme is bij BYWILL geen affirmatie en geen truc. Het is een nuchter kader om richting te houden.
-          Het werkt pas echt wanneer het gekoppeld wordt aan wat je in je lichaam voelt.
+          Nuchter kader om richting te houden. Gekoppeld aan wat je in je lichaam voelt.
         </p>
       </div>
 
       <div class="grid3">
         <article class="card">
-          <h3>Onderscheid</h3>
-          <p>Wat is van jou en wat is niet van jou. Waar heb je invloed op en waar niet.</p>
-          <ul class="cleanList">
-            <li>Invloed, geen controle</li>
-            <li>Actie waar het kan, loslaten waar het niet kan</li>
-          </ul>
+          <h3>Invloed</h3>
+          <p>Actie waar het kan. Loslaten waar het niet kan.</p>
         </article>
         <article class="card">
-          <h3>Waarden boven stemming</h3>
-          <p>Gevoel wisselt. Waarden blijven. Handelen vanuit kernwaarden, ook onder druk.</p>
-          <ul class="cleanList">
-            <li>Stevig zonder hard</li>
-            <li>Helder onder spanning</li>
-          </ul>
+          <h3>Waarden</h3>
+          <p>Waarden boven stemming. Stevig zonder hard.</p>
         </article>
         <article class="card">
-          <h3>Dagelijkse praktijk</h3>
-          <p>Geen groot moment, maar kleine herhalingen: waarnemen, kiezen, handelen.</p>
-          <ul class="cleanList">
-            <li>Korte check-ins</li>
-            <li>Richting houden zonder perfectie</li>
-          </ul>
+          <h3>Dagelijks</h3>
+          <p>Korte check ins. Volgende juiste stap.</p>
         </article>
-      </div>
-
-      <div class="card soft" style="margin-top:18px;">
-        <h3>Stoïcisme gekoppeld aan het lichaam</h3>
-        <p>We koppelen denken aan de zone waar het gebeurt. Dan wordt stoïcisme toepasbaar.</p>
-      </div>
-
-      <div class="mappingGrid">
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 3 middenrif</span><span class="pill">adem</span></div>
-          <h3 style="font-size:16px;">Als controle opschakelt</h3>
-          <p>Eerst reguleren, dan kiezen. Grote beslissingen pas als je systeem zakt.</p>
-          <div class="mapLine"><strong>Stoïcijnse zin</strong><span>Ik kies actie waar ik invloed heb, en laat de rest.</span></div>
-        </article>
-
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 5 keel</span><span class="pill">grenzen</span></div>
-          <h3 style="font-size:16px;">Als je inhoudt of doordrukt</h3>
-          <p>Waarheid zonder hardheid. Eerlijk, rustig, precies.</p>
-          <div class="mapLine"><strong>Stoïcijnse zin</strong><span>Ik spreek helder, zonder te duwen.</span></div>
-        </article>
-
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 6 voorhoofd</span><span class="pill">overzicht</span></div>
-          <h3 style="font-size:16px;">Als denken overheerst</h3>
-          <p>Van ruis naar 1 stap. Wat is nu de volgende juiste actie.</p>
-          <div class="mapLine"><strong>Stoïcijnse zin</strong><span>Ik doe de volgende juiste stap.</span></div>
-        </article>
-
-        <article class="card">
-          <div class="mapTop"><span class="pill">Zone 4 hart</span><span class="pill">draagkracht</span></div>
-          <h3 style="font-size:16px;">Als je sluit of verhardt</h3>
-          <p>Aanwezig blijven zonder jezelf te verliezen. Open en stevig tegelijk.</p>
-          <div class="mapLine"><strong>Stoïcijnse zin</strong><span>Ik blijf open, en ik blijf stevig.</span></div>
-        </article>
-      </div>
-
-      <div class="card soft" style="margin-top:18px;">
-        <h3>De BYWILL check-in</h3>
-        <p>30 seconden. 4 vragen. Iedere dag. Chakra, adem en stoïcisme komen samen.</p>
-
-        <div class="guideGrid">
-          <div class="stepMini"><div class="stepNr">1</div><div><strong>Waar zit ik</strong><div class="stepTxt">Welke zone is het meest actief</div></div></div>
-          <div class="stepMini"><div class="stepNr">2</div><div><strong>Wat is invloed</strong><div class="stepTxt">Wat kan ik doen, wat laat ik los</div></div></div>
-          <div class="stepMini"><div class="stepNr">3</div><div><strong>Wat is de stap</strong><div class="stepTxt">1 kleine actie die klopt</div></div></div>
-          <div class="stepMini"><div class="stepNr">4</div><div><strong>Adem en ga</strong><div class="stepTxt">1 rustige uitademing en door</div></div></div>
-        </div>
-
-        <p class="note">Dit is begeleiding en training, geen therapie. Bij klachten of twijfel: overleg met arts of specialist.</p>
       </div>
     </div>
   </section>
 
   <section id="kennismaken" class="section">
     <div class="wrap">
-      <div class="kennismakenIntro">
+      <div class="sectionHead">
         <h2>Kennismaken</h2>
-        <p class="lead">Deze kennismaking is geen intake. Geen beoordeling. Geen besluit.</p>
-        <p class="lead">Het is een moment om te voelen of deze reis jou raakt en of jouw lichaam klaar is om mee te bewegen.</p>
-
-        <div class="kennismakenText">
-          <p>We zitten samen. Zonder agenda. Zonder verwachting.</p>
-          <p>Jij hoeft niets uit te leggen of te bewijzen. Ik luister. Naar wat je zegt, en naar wat er tussen de woorden voelbaar wordt.</p>
-          <p>We kijken niet naar wie je zou moeten zijn, maar naar waar je nu bent. In je lichaam. In je leven.</p>
-          <p>En pas daarna, heel rustig, kijken we of deze reis klopt voor jou.</p>
-        </div>
-
-        <div class="kennismakenActions">
-          <a href="#contact" class="btn primary">Inschrijven voor intakegesprek</a>
-          <a href="#start-de-reis" class="btn">Eerst lezen wat de reis vraagt</a>
-        </div>
-
-        <div class="smallNote">
-          Contact loopt via inschrijving met naam en telefoonnummer. Daarna bellen we voor een kort gesprek om te voelen of het past.
-        </div>
+        <p class="sectionLead">Een open gesprek zonder oordeel. We stemmen rustig af of dit past.</p>
       </div>
 
-      <div class="kennismakenGrid">
-        <div class="card soft">
-          <h3>Wat deze kennismaking wél is</h3>
-          <ul class="cleanList">
-            <li>Een open gesprek zonder oordeel</li>
-            <li>Ruimte om te voelen wat er in je lichaam gebeurt</li>
-          </ul>
-        </div>
+      <div class="card soft">
+        <h3>Hoe het gaat</h3>
+        <ul class="cleanList">
+          <li>Je hoeft niets te bewijzen</li>
+          <li>We kijken naar wat er in je lichaam gebeurt</li>
+          <li>Daarna besluiten we rustig</li>
+        </ul>
       </div>
     </div>
   </section>
@@ -921,16 +676,12 @@
       <div class="sectionHead">
         <h2>Contact</h2>
         <p class="sectionLead">
-          Contact verloopt uitsluitend via inschrijving. Alleen naam en telefoonnummer. Daarna bellen we voor een kort gesprek.
+          Contact via inschrijving. Alleen naam en telefoonnummer. Daarna bellen we kort.
         </p>
       </div>
 
-      <div class="contactCard">
-        <p class="contactText">
-          Laat hieronder je naam en telefoonnummer achter. Ik neem persoonlijk contact met je op.
-        </p>
-
-        <form class="contactForm" id="inschrijfForm" novalidate>
+      <div class="card soft">
+        <form id="inschrijfForm" novalidate>
           <div class="formField">
             <label for="naam">Naam</label>
             <input type="text" id="naam" name="naam" placeholder="Je naam" required minlength="2">
@@ -941,12 +692,10 @@
             <input type="tel" id="telefoon" name="telefoon" placeholder="Je telefoonnummer" required minlength="6">
           </div>
 
-          <button type="submit" class="btn primary formBtn">Inschrijven</button>
+          <button type="submit" class="btn primary">Inschrijven</button>
 
           <div class="formMessage" id="formMessage"></div>
-          <p class="note">
-            Door je in te schrijven geef je toestemming om telefonisch contact op te nemen voor dit ene gesprek.
-          </p>
+          <p class="note">Door je in te schrijven geef je toestemming om telefonisch contact op te nemen.</p>
         </form>
       </div>
     </div>
@@ -957,7 +706,7 @@
 <footer>
   <div class="wrap">
     BYWILL.nu – Innerlijke Reis<br>
-    Chakra · Adem · Stoïcisme
+    Lichaamszones · Adem · Stoïcisme
   </div>
 </footer>
 
@@ -965,6 +714,7 @@
   (function(){
     const form = document.getElementById("inschrijfForm");
     const msg = document.getElementById("formMessage");
+    if(!form || !msg) return;
 
     function setMessage(text){
       msg.textContent = text;
@@ -988,7 +738,7 @@
         return;
       }
 
-      setMessage("Dank je. Je inschrijving is ontvangen. We nemen telefonisch contact met je op voor een kort gesprek.");
+      setMessage("Dank je. Je inschrijving is ontvangen. We nemen contact op voor een kort gesprek.");
       form.reset();
     });
   })();
