@@ -36,6 +36,16 @@ body{
   margin: 0 auto;
   padding: 0 18px;
 }
+.section-beeld{
+  width:100%;
+  max-width:420px;
+  height:auto;
+  border-radius:16px;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,.22);
+  display:block;
+}
+
 
 /* brand row */
 .topbar{
