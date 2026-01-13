@@ -1,5 +1,2 @@
-title: BYWILL
-description: Innerlijke Reis
-theme: null
-markdown: kramdown
-permalink: pretty
+url: "https://willvendel-source.github.io"
+baseurl: "/BYWILL2"
