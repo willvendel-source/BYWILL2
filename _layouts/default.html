@@ -1,54 +1,36 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="utf-8">
-  <title>{{ page.title | default: "BYWILL" }}</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
-  <script defer src="{{ '/assets/script.js' | relative_url }}"></script>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ '/assets/style.css' | relative_url }}">
 </head>
 
 <body>
+  <header class="site-header">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <img class="brand-logo" src="{{ '/assets/bywill-logo.png' | relative_url }}" alt="BYWILL">
+      <span class="brand-text">BYWILL</span>
+    </a>
 
-<header class="siteHeader">
-  <div class="wrap nav">
-    <div class="brand">
-      <img src="{{ '/assets/bywill-logo.png' | relative_url }}" alt="BYWILL logo">
-      <span>BYWILL</span>
-    </div>
-
-    <nav class="menu">
-      <a href="#home">Start</a>
-      <a href="#start-de-reis">Reis</a>
-      <a href="#chakra-zones">7 zones</a>
-      <a href="#ademsessies">Adem</a>
-      <a href="#stoicisme">Stoïcisme</a>
-      <a href="#kennismaken">Kennismaken</a>
-      <a href="#contact">Contact</a>
+    <nav class="site-nav">
+      <a href="{{ '/' | relative_url }}#start">Start</a>
+      <a href="{{ '/' | relative_url }}#reis">Reis</a>
+      <a href="{{ '/' | relative_url }}#zones">7 zones</a>
+      <a href="{{ '/' | relative_url }}#adem">Adem</a>
+      <a href="{{ '/' | relative_url }}#stoicisme">Stoïcisme</a>
+      <a href="{{ '/' | relative_url }}#kennismaken">Kennismaken</a>
+      <a href="{{ '/' | relative_url }}#contact">Contact</a>
     </nav>
+  </header>
 
-    <div class="navRight">
-      <a class="btn" href="#kennismaken">Kennismaken</a>
-      <a class="btn primary" href="#contact">Inschrijven</a>
-    </div>
-  </div>
-</header>
+  <main class="site-main">
+    {{ content }}
+  </main>
 
-<main>
-  {{ content }}
-</main>
-
-<footer class="siteFooter">
-  <div class="wrap">
-    BYWILL nu Innerlijke Reis<br>
-    Lichaamszones Adem Stoïcisme
-  </div>
-</footer>
-
+  <footer class="site-footer">
+    <div>© BYWILL</div>
+  </footer>
 </body>
 </html>
